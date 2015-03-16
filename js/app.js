@@ -1,19 +1,17 @@
-//constants
 var STEP_LEFT_RIGHT = 101;
 var STEP_UP_DOWN = 83;
-var NUM_ENEMY = 6;
-var START_X = 202;
-var START_Y = 404;
-var ENEMY_SPEEDS
+var numEnemy = 6;
+var STEP_X = 202;
+var STEP_Y = 404;
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.x = 0;
     this.y = 63 + (Math.round(Math.random() * 2) * 83);
-    // The speed for enemys 
+    // The speed fot enemys
     this.speed = 1 + Math.random();
-    
+
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -26,9 +24,8 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 
-    //update positions
+    //update position
     this.x  = (this.x + (101 * dt * this.speed)) % 1010;
-    //this.x += this.speed * dt;
 }
 
 // Draw the enemy on the screen, required method for game
@@ -40,7 +37,6 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function(x, y) {
-    //initil position of the player
     this.x = x;
     this.y = y;
     this.score = 0;
@@ -55,17 +51,16 @@ Player.prototype.update = function() {
     var  bug = allEnemies.length; 
     for(var index = 0; index < bug; index++) {
         if(this.x < allEnemies[index].x + 90 && this.x + 65 > allEnemies[index].x + 2 
-          && this.y + 135 > allEnemies[index].y + 142 && this.y + 65 < allEnemies[index].y + 79) {
-            this.score  = 0;
-            this.x = START_X;
-            this.y = START_Y;
+          && this.y + 135 > allEnemies[index].y + 142 && this.y + 65 < allEnemies[index].y + 79) {          this.score  = 0;
+            this.x = STEP_X;
+            this.y = STEP_Y;
         }
     }
 //if player win, add 5 do score
     if(this.y <= 0) {
         this.score += 5;
-        this.x = START_X;
-        this.y = START_Y;
+        this.x = STEP_X;
+        this.y = STEP_Y;
     }
 
     // Display Score
@@ -80,7 +75,7 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
-// Move player  and check that it is not beyond the bounds of the field
+// Move player and check that it is not beyond the bounds of the field
 Player.prototype.handleInput = function(direction) {
     if(direction == 'left' && this.x - STEP_LEFT_RIGHT >= 0)
         this.x -= STEP_LEFT_RIGHT;
@@ -100,13 +95,13 @@ Player.prototype.handleInput = function(direction) {
 // Create all enemies for game.
 var allEnemies = [];
 
-for (var index = 0; index < NUM_ENEMY; index++) {
+for (var index = 0; index < numEnemy; index++) {
     var enemyObj = new Enemy();
     allEnemies.push(enemyObj);
 };
 
 //Create player.
-var player = new Player(START_X, START_Y);
+var player = new Player(STEP_X, STEP_Y);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
