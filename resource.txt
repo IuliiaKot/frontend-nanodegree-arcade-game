@@ -1,0 +1,7 @@
+JS
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript
+http://eloquentjavascript.net/1st_edition/chapter8.html
+http://javascriptissexy.com/oop-in-javascript-what-you-need-to-know/
+
+https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/edit
+https://www.udacity.com/course/viewer#!/c-ud292-nd/l-3163218691/m-3169968819
